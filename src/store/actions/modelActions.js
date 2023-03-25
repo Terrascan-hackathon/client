@@ -1,4 +1,4 @@
-import { loginFailure, loginRequest, loginSuccess, registerFailure, registerRequest, registerSuccess } from "../types/modelTypes";
+import { loginFailure, loginRequest, loginSuccess, logoutFailure, logoutRequest, logoutSuccess, registerFailure, registerRequest, registerSuccess } from "../types/modelTypes";
 import {requestUser} from "../../utils/axiosConfig"
 
 export const login = (data, onSucces = () => {}) => {
@@ -29,6 +29,20 @@ export const register = (data, onSucces = () => {}) => {
         }).catch((err) => {
             const error = err?.response?.data;
             dispatch(registerFailure(error));
+        })
+    }
+}
+export const logout = () => {
+    return async (dispatch) => {
+        dispatch(logoutRequest());
+        requestUser
+        .post('logout').then((res) => {
+            console.log(res)
+            const data = res?.data;
+            dispatch(logoutSuccess(data));
+        }).catch((err) => {
+            const error = err?.response?.data;
+            dispatch(logoutFailure(error));
         })
     }
 }

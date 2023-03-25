@@ -1,8 +1,9 @@
 import React from 'react'
-import { IconButton, Toolbar, Typography } from '@mui/material';
+import { IconButton, Toolbar, Typography, Box, Button, AppBar as MuiAppBar } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import MuiAppBar from '@mui/material/AppBar';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/actions/modelActions';
 
 const drawerWidth = 240;
 
@@ -25,10 +26,17 @@ const AppBar = styled(MuiAppBar, {
 }));
 const Header = (props) => {
     const { open, handleDrawerOpen } = props;
+    const dispatch = useDispatch();
+    const handleLogout = () => {
+        dispatch(logout());
+    }
+
+
     return (
         <>
             <AppBar position="fixed" open={open}>
-                <Toolbar>
+                <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#ccc'}}>
+                    <Box sx={{width:'300px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -44,6 +52,8 @@ const Header = (props) => {
                     <Typography variant="h6" noWrap component="div">
                         TerraScan.app
                     </Typography>
+                    </Box>
+                    <Button  variant="contained" sx={{color:"#fff" , backgroundColor: '#00f'}} onClick={handleLogout}>Logout</Button>
                 </Toolbar>
             </AppBar>
         </>

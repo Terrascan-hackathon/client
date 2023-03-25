@@ -26,15 +26,13 @@ export default function SignIn() {
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const data = event.currentTarget
+    console.log(data);
     dispatch(login({
-      email: data.get('email'),
-      password: data.get('password'),
+      email: data.email.value,
+      password: data.password.value,
     }, () => navigate('/')));
   };
-
-const label = { inputProps: { 'aria-label': 'Switch demo' } };
-const [auth, setAuth] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
@@ -78,7 +76,6 @@ const [auth, setAuth] = useState(false);
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <Switch {...label} onChange={() => setAuth(!auth)} checked={auth} />
             <Button
               type="submit"
               fullWidth

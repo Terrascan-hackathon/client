@@ -13,7 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { register } from '../../store/actions/modelActions';
 import { useNavigate } from 'react-router-dom';
 
@@ -26,11 +26,11 @@ export default function SignIn() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const role= checked === "authority" ? data.get("authority") : data.get("reporter")
+    const data = event.currentTarget
+    const role= checked === "authority" ? data?.authority.value : data?.reporter.value
     dispatch(register({
-      email: data.get('email'),
-      password: data.get('password'),
+        email: data?.email?.value,
+        password: data?.password?.value,
       role: role
     }, () => navigate('/login')));
   };
