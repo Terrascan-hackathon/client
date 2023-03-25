@@ -1,56 +1,107 @@
+
 import * as React from 'react';
-import TextField from '@mui/material/TextField';
+import { useState } from 'react';
+import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import { Link, Navigate } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Switch from '@mui/material/Switch';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../store/actions/modelActions';
+import { useNavigate } from 'react-router-dom';
 
- const LogIn = () => {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  // const [age, setAge] = React.useState('');
-  // const dispatch = useDispatch();
-  const isLoggedIn =false;
+export default function SignIn() {
+  const theme = createTheme();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    dispatch(login({
+      email: data.get('email'),
+      password: data.get('password'),
+    }, () => navigate('/')));
+  };
 
-  if (isLoggedIn) {
-    return <Navigate to={'/'} replace />;
-  }
+const label = { inputProps: { 'aria-label': 'Switch demo' } };
+const [auth, setAuth] = useState(false);
 
   return (
-    <div className="d-flex h-100 flex-column justify-center align-center">
-      <TextField
-        required
-        id="outlined-required"
-        label="Email"
-        placeholder="email"
-        sx={{
-          margin: '10px 0'
-        }}
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <TextField
-        id="outlined-password-input"
-        label="Password"
-        type="password"
-        autoComplete="current-password"
-        placeholder="password"
-        sx={{
-          margin: '10px 0'
-        }}
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <Button
-        variant="outlined"
-        className="my-3"
-        onClick={() => console.log('test')}>
-        Log in
-      </Button>
-      <p className="my-3">Don't have an account?</p>
-      <Link to={'/register'} className="my-3">
-        <Button variant="outlined">Go to register</Button>
-      </Link>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}>
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Login
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Switch {...label} onChange={() => setAuth(!auth)} checked={auth} />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Login
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="/register" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 }
-export default LogIn;

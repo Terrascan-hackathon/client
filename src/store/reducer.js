@@ -11,7 +11,7 @@ import userReducer from './reducers/modelReducers';
 
 
 const reducer = combineReducers({
-   usetrState: userReducer,
+   userState: userReducer,
 });
 
 export default reducer;
