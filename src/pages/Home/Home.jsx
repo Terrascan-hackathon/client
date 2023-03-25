@@ -1,8 +1,11 @@
 import React from 'react'
+import Aside from '../../components/aside/Aside'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div style={{width: 100}}>
+      <Aside/>
+    </div>
   )
 }
 
