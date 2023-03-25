@@ -4,6 +4,7 @@ import LogIn from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import Home from '../pages/Home/Home';
 import NotFound from '../pages/NotFound/Notfound';
+import { useSelector } from 'react-redux';
 
 // Here, the Header and the Footer will stay the same on every page.
 // We then have the routes, the path prop shows the path of the page,
@@ -13,7 +14,7 @@ import NotFound from '../pages/NotFound/Notfound';
 // and the rest are put in alphabetical order.
 
 const Routing = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = useSelector((state) => state?.userState?.isLoggedIn);
 
   const ProtectedRoute = ({ isLoggedIn, redirectPath = '/login', children }) => {
     if (!isLoggedIn) {
