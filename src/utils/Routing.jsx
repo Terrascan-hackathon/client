@@ -13,7 +13,7 @@ import NotFound from '../pages/NotFound/Notfound';
 // and the rest are put in alphabetical order.
 
 const Routing = () => {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
 
   const ProtectedRoute = ({ isLoggedIn, redirectPath = '/login', children }) => {
     if (!isLoggedIn) {
@@ -35,8 +35,12 @@ const Routing = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<LogIn />} />
+        <Route path="/register" element={
+          <Register />
+        } />
+        <Route path="/login" element={
+          <LogIn />
+        } />
       </Routes>
     </div>
   );
