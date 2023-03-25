@@ -16,12 +16,12 @@ export default function Register() {
       <TextField
         required
         id="outlined-required"
-        label="Username"
-        placeholder="username"
+        label="email"
+        placeholder="email"
         sx={{
           margin: '10px 0'
         }}
-        value={userName}
+        value={email}
         onChange={(e) => setEmail(e?.target?.value)}
       />
       <TextField

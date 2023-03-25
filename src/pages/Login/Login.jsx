@@ -4,12 +4,12 @@ import Button from '@mui/material/Button';
 import { Link, Navigate } from 'react-router-dom';
 // import { useDispatch, useSelector } from 'react-redux';
 
- const LogIn = () => {
+const LogIn = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   // const [age, setAge] = React.useState('');
   // const dispatch = useDispatch();
-  const isLoggedIn =false;
+  const isLoggedIn = false;
 
   if (isLoggedIn) {
     return <Navigate to={'/'} replace />;
