@@ -36,8 +36,12 @@ const Routing = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<LogIn />} />
+        <Route path="/register" element={
+          <Register />
+        } />
+        <Route path="/login" element={
+          <LogIn />
+        } />
       </Routes>
     </div>
   );
