@@ -1,11 +1,11 @@
 import React from 'react'
-import Aside from '../../components/aside/Aside'
+import TimeSelector from '../../components/time-selector/TimeSelector'
 
 const Home = () => {
   return (
-    <div style={{ width: 100 }}>
-
-    </div>
+    <div>
+      <h1>Home Page</h1>
+    </div >
   )
 }
 
