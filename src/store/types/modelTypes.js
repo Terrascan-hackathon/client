@@ -7,6 +7,9 @@ export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+export const POSTALERT_REQUEST = 'POSTALERT_REQUEST';
+export const POSTALERT_SUCCESS = 'POSTALERT_SUCCESS';
+export const POSTALERT_FAILURE = 'POSTALERT_FAILURE';
 
 
 // *****************| LOGIN |*************************
@@ -69,6 +72,26 @@ export const logoutSuccess = (payload) => {
 export const logoutFailure = (payload) => {
     return {
         type: LOGOUT_FAILURE,
+        payload: payload
+    }
+}
+export const postAlertRequest = (payload) => {
+    return {
+        type: POSTALERT_REQUEST,
+        payload: payload
+    }
+}
+
+export const postAlertSuccess = (payload) => {
+    return {
+        type: POSTALERT_SUCCESS,
+        payload: payload
+    }
+}
+
+export const postAlertFailure = (payload) => {
+    return {
+        type: POSTALERT_FAILURE,
         payload: payload
     }
 }
