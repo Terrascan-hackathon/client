@@ -7,6 +7,9 @@ export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+export const GETDATA_REQUEST = 'GETDATA_REQUEST';
+export const GETDATA_SUCCESS = 'GETDATA_SUCCESS';
+export const GETDATA_FAILURE = 'GETDATA_FAILURE';
 
 
 // *****************| LOGIN |*************************
@@ -51,6 +54,7 @@ export const registerFailure = (payload) => {
         payload: payload
     }
 }
+
 // *****************| LOGOUT |*************************
 
 export const logoutRequest = () => {
@@ -69,6 +73,28 @@ export const logoutSuccess = (payload) => {
 export const logoutFailure = (payload) => {
     return {
         type: LOGOUT_FAILURE,
+        payload: payload
+    }
+}
+
+// *****************| DATAPOST |*************************
+
+export const getDataRequest = () => {
+    return {
+        type: GETDATA_REQUEST
+    }
+}
+
+export const getDataSuccess = (payload) => {
+    return {
+        type: GETDATA_SUCCESS,
+        payload: payload
+    }
+}
+
+export const getDataFailure = (payload) => {
+    return {
+        type: GETDATA_FAILURE,
         payload: payload
     }
 }

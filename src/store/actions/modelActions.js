@@ -1,4 +1,4 @@
-import { loginFailure, loginRequest, loginSuccess, logoutFailure, logoutRequest, logoutSuccess, registerFailure, registerRequest, registerSuccess } from "../types/modelTypes";
+import { loginFailure, loginRequest, loginSuccess, logoutFailure, logoutRequest, logoutSuccess, registerFailure, registerRequest, registerSuccess, getDataRequest, getDataSuccess, getDataFailure } from "../types/modelTypes.js";
 import {requestUser} from "../../utils/axiosConfig"
 
 export const login = (data, onSucces = () => {}) => {
@@ -32,6 +32,7 @@ export const register = (data, onSucces = () => {}) => {
         })
     }
 }
+
 export const logout = () => {
     return async (dispatch) => {
         dispatch(logoutRequest());
@@ -43,6 +44,23 @@ export const logout = () => {
         }).catch((err) => {
             const error = err?.response?.data;
             dispatch(logoutFailure(error));
+        })
+    }
+}
+
+export const getData = (date, location, type) => {
+    const formatType = type.toLowerCase();
+    return async (dispatch) => {
+        dispatch(getDataRequest());
+        requestUser
+        .get(`data/${location}`)
+        .then((res) => {
+            console.log(res)
+            const data = res?.data;
+            dispatch(getDataSuccess(data));
+        }).catch((err) => {
+            const error = err?.response?.data;
+            dispatch(getDataFailure(error));
         })
     }
 }

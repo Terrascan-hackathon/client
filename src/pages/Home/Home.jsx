@@ -1,10 +1,11 @@
 import React from 'react'
-import TimeSelector from '../../components/time-selector/TimeSelector'
+import FormSelector from '../../components/form-selector/FormSelector';
 
 const Home = () => {
   return (
     <div>
       <h1>Home Page</h1>
+      <FormSelector />
     </div >
   )
 }

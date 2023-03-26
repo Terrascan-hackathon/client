@@ -11,7 +11,7 @@ const initialState = {
         message: "",
     },
     user: {},
-    isLoggedIn: true,
+    isLoggedIn: false,
 };
 
 const userReducer = (state = initialState, action) => {

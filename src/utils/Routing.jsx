@@ -14,8 +14,7 @@ import { useSelector } from 'react-redux';
 // and the rest are put in alphabetical order.
 
 const Routing = () => {
-  // const isLoggedIn = useSelector((state) => state?.userState?.isLoggedIn);
-  const isLoggedIn = true;
+  const isLoggedIn = useSelector((state) => state?.userState?.isLoggedIn);
 
   const ProtectedRoute = ({ isLoggedIn, redirectPath = '/login', children }) => {
     if (!isLoggedIn) {
