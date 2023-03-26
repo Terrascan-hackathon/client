@@ -1,25 +1,25 @@
-import { Archive, Mail } from '@mui/icons-material';
+import { Home, WindPower, Thermostat, Opacity } from '@mui/icons-material';
 
 
 export const actionItems = [
     {
-        title: 'test1',
-        icon: <Archive />,
+        title: 'Home',
+        icon: <Home />,
         url: '/'
     },
     {
-        title: 'test2',
-        icon: <Mail />,
-        url: '/'
+        title: 'Temperature',
+        icon: <Thermostat />,
+        url: '/temperature'
     },
     {
-        title: 'test3',
-        icon: <Archive />,
-        url: '/'
+        title: 'Wind',
+        icon: <WindPower />,
+        url: '/wind'
     },
     {
-        title: 'test4',
-        icon: <Mail />,
-        url: '/'
+        title: 'Humidity',
+        icon: <Opacity />,
+        url: '/humidity'
     },
 ]
