@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import alertReducer from './reducers/alertReducer';
 
 //  *****************|  MODELS FOR IMPORTS |********************
 
@@ -14,6 +15,7 @@ import dataReducer from './reducers/dataReducer';
 const reducer = combineReducers({
    userState: userReducer,
    dataState: dataReducer
+   alertState : alertReducer,
 });
 
 export default reducer;

@@ -10,6 +10,9 @@ export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 export const GETDATA_REQUEST = 'GETDATA_REQUEST';
 export const GETDATA_SUCCESS = 'GETDATA_SUCCESS';
 export const GETDATA_FAILURE = 'GETDATA_FAILURE';
+export const POSTALERT_REQUEST = 'POSTALERT_REQUEST';
+export const POSTALERT_SUCCESS = 'POSTALERT_SUCCESS';
+export const POSTALERT_FAILURE = 'POSTALERT_FAILURE';
 
 
 // *****************| LOGIN |*************************
@@ -77,6 +80,7 @@ export const logoutFailure = (payload) => {
     }
 }
 
+
 // *****************| DATAPOST |*************************
 
 export const getDataRequest = () => {
@@ -88,13 +92,29 @@ export const getDataRequest = () => {
 export const getDataSuccess = (payload) => {
     return {
         type: GETDATA_SUCCESS,
+
+export const postAlertRequest = (payload) => {
+    return {
+        type: POSTALERT_REQUEST,
         payload: payload
     }
 }
 
+export const postAlertSuccess = (payload) => {
+    return {
+        type: POSTALERT_SUCCESS,
+        payload: payload
+    }
+}
+
+
 export const getDataFailure = (payload) => {
     return {
         type: GETDATA_FAILURE,
+
+export const postAlertFailure = (payload) => {
+    return {
+        type: POSTALERT_FAILURE,
         payload: payload
     }
 }

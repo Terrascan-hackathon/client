@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
+import { useNavigate } from 'react-router-dom';
 
 const MenuTabs = (props) => {
     const { menuItems } = props;
+    const navigate = useNavigate();
+
     return (
         <>
             <List>
                 {menuItems.map((item, index) => (
-                    <ListItem key={item.title + index} disablePadding sx={{ display: 'block' }}>
+                    <ListItem key={item.title + index} disablePadding sx={{ display: 'block' }} onClick={() => navigate(item?.url)}>
                         <ListItemButton
                             sx={{
                                 minHeight: 48,

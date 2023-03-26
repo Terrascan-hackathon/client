@@ -1,4 +1,5 @@
-import { loginFailure, loginRequest, loginSuccess, logoutFailure, logoutRequest, logoutSuccess, registerFailure, registerRequest, registerSuccess, getDataRequest, getDataSuccess, getDataFailure } from "../types/modelTypes.js";
+import { loginFailure, loginRequest, loginSuccess, logoutFailure, logoutRequest, logoutSuccess, postAlertFailure, postAlertRequest, postAlertSuccess, registerFailure, registerRequest, registerSuccess } from "../types/modelTypes";
+
 import {requestUser} from "../../utils/axiosConfig"
 
 export const login = (data, onSucces = () => {}) => {
@@ -48,6 +49,7 @@ export const logout = () => {
     }
 }
 
+
 export const getData = (date, location, type) => {
     const formatType = type.toLowerCase();
     return async (dispatch) => {
@@ -61,6 +63,22 @@ export const getData = (date, location, type) => {
         }).catch((err) => {
             const error = err?.response?.data;
             dispatch(getDataFailure(error));
+        })
+    }
+}
+
+export const postAlert = (data, onSuccess = ()=> {}) => {
+    return async (dispatch) => {
+        dispatch(postAlertRequest());
+        requestUser
+        .post('posts', data).then((res) => {
+            console.log(res)
+            const data = res?.data;
+            dispatch(postAlertSuccess(data));
+            onSuccess && onSuccess();
+        }).catch((err) => {
+            const error = err?.response?.data;
+            dispatch(postAlertFailure(error));
         })
     }
 }
