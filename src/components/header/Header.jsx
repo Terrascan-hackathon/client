@@ -2,8 +2,10 @@ import React from 'react'
 import { IconButton, Toolbar, Typography, Box, Button, AppBar as MuiAppBar } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/actions/modelActions';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -27,6 +29,12 @@ const AppBar = styled(MuiAppBar, {
 const Header = (props) => {
     const { open, handleDrawerOpen } = props;
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const role = useSelector((state)=> state?.userState?.user?.role)
+    const isLoggedIn = useSelector((state)=> state?.userState?.isLoggedIn)
+
+    const displayRole = role?.toUpperCase();
+
     const handleLogout = () => {
         dispatch(logout());
     }
@@ -53,7 +61,18 @@ const Header = (props) => {
                         TerraScan.app
                     </Typography>
                     </Box>
-                    <Button  variant="contained" sx={{color:"#fff" , backgroundColor: '#00f'}} onClick={handleLogout}>Logout</Button>
+                    <Box >
+                        <Typography variant="h6" noWrap component="div">
+                            {displayRole}
+                        </Typography>
+                    </Box>
+                    { isLoggedIn ?
+                        <Button  variant="contained" sx={{color:"#fff" , backgroundColor: '#00f'}} onClick={handleLogout}>Logout</Button>
+                    :
+                        <Button variant="outlined" onClick={()=> navigate('/login') } startIcon={<AccountCircleIcon />}>
+                            Sing-in
+                        </Button>
+                    }
                 </Toolbar>
             </AppBar>
         </>

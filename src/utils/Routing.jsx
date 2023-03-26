@@ -5,6 +5,12 @@ import Register from '../pages/Register/Register';
 import Home from '../pages/Home/Home';
 import NotFound from '../pages/NotFound/Notfound';
 import { useSelector } from 'react-redux';
+import Guest from '../pages/Guest/Guest';
+import Temperature from '../pages/Temperature/Temperature';
+import Wind from '../pages/Wind/Wind';
+import Humidity from '../pages/Humidity/Humidity';
+import PostAlert from '../pages/PostAlert/PostAlert';
+import Information from '../pages/Information/Information'
 
 // Here, the Header and the Footer will stay the same on every page.
 // We then have the routes, the path prop shows the path of the page,
@@ -15,8 +21,9 @@ import { useSelector } from 'react-redux';
 
 const Routing = () => {
   const isLoggedIn = useSelector((state) => state?.userState?.isLoggedIn);
+  const role = useSelector((state)=> state?.userState?.user?.role)
 
-  const ProtectedRoute = ({ isLoggedIn, redirectPath = '/login', children }) => {
+  const ProtectedRoute = ({ isLoggedIn, redirectPath = '/guest', children }) => {
     if (!isLoggedIn) {
       return <Navigate to={redirectPath} replace />;
     }
@@ -29,6 +36,14 @@ const Routing = () => {
         <Route path="/notfound" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/notfound" replace />} />
         <Route
+          path="/guest"
+          element={
+            <ProtectedRoute isLoggedIn={!isLoggedIn}>
+              <Guest />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/"
           element={
             <ProtectedRoute isLoggedIn={isLoggedIn}>
@@ -36,6 +51,41 @@ const Routing = () => {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/temperature"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <Temperature />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/wind"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <Wind />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/humidity"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <Humidity />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/post-alert"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn && role === 'authority'}>
+              <PostAlert />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/information" element={
+          <Information />
+        } />
         <Route path="/register" element={
           <Register />
         } />

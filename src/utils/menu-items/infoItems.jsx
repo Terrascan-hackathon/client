@@ -1,20 +1,15 @@
-import { Info } from '@mui/icons-material';
+import { Info, ReportProblem } from '@mui/icons-material';
 
 
 export const infoItems = [
     {
-        title: 'info1',
-        icon: <Info />,
-        url: '/'
+        title: 'Post Alert',
+        icon: <ReportProblem />,
+        url: '/post-alert'
     },
     {
-        title: 'info 2',
+        title: 'Information',
         icon: <Info />,
-        url: '/'
-    },
-    {
-        title: 'info 3',
-        icon: <Info />,
-        url: '/'
+        url: '/information'
     },
 ]

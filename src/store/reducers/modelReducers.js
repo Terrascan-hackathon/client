@@ -77,7 +77,7 @@ const userReducer = (state = initialState, action) => {
                         status: false,
                         message: action?.payload?.message,
                     },
-                    user: initialState?.user,
+                    user: {},
                     isLoggedIn: false
                 };
             case LOGOUT_FAILURE:
@@ -88,7 +88,7 @@ const userReducer = (state = initialState, action) => {
                         status: true,
                         message: action?.payload?.error,
                     },
-                    user: initialState?.user,
+                    user: {},
                     isLoggedIn: false
                 };
         default:
