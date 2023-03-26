@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import FormSelector from "../../components/form-selector/FormSelector";
+import { useSelector } from "react-redux";
+import { Box } from "@mui/material";
 
 const Temperature = () => {
-  return (
-    <div>Temperature</div>
-  )
-}
+  const images = useSelector((state) => state?.dataState?.data);
 
-export default Temperature
+  return (
+    <div>
+      <FormSelector />
+      <Box
+        component={"img"}
+        alt={"alert-cover"}
+        src={`data:image/png;base64, ${images?.country}`}
+        sx={{ width: "50%", p: 1 }}
+      />
+      <Box
+        component={"img"}
+        alt={"alert-cover"}
+        src={`data:image/png;base64, ${images?.temperature}`}
+        sx={{ width: "50%", p: 1 }}
+      />
+    </div>
+  );
+};
+
+export default Temperature;
