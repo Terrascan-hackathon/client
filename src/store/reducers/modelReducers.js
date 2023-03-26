@@ -1,7 +1,7 @@
 import {
     LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, 
     REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, 
-    LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE,
+    LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE, POSTALERT_REQUEST, POSTALERT_SUCCESS, POSTALERT_FAILURE,
 } from "../types/modelTypes"
 
 const initialState = {
@@ -91,6 +91,29 @@ const userReducer = (state = initialState, action) => {
                     user: initialState?.user,
                     isLoggedIn: false
                 };
+                case POSTALERT_REQUEST:
+                    return {
+                        ...state,
+                        loading: true,
+                    };
+                case POSTALERT_SUCCESS:
+                    return {
+                        ...state,
+                        loading: false,
+                        error: {
+                            status: false,
+                            message: action?.payload?.message,
+                        },
+                    };
+                case POSTALERT_FAILURE:
+                    return {
+                        ...state,
+                        loading: false,
+                        error: {
+                            status: true,
+                            message: action?.payload?.error,
+                        },
+                    };
         default:
             return state;
     }
