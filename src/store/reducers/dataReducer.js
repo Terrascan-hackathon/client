@@ -21,7 +21,6 @@ const dataReducer = (state = initialState, action) => {
         loading: true,
       };
     case GETDATA_SUCCESS:
-      console.log("action: ", action?.payload);
       return {
         ...state,
         loading: false,

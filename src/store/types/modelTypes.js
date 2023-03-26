@@ -88,7 +88,6 @@ export const getDataRequest = () => {
 };
 
 export const getDataSuccess = (payload) => {
-  console.log("payload: ", payload);
   return {
     type: GETDATA_SUCCESS,
     payload: payload,

@@ -9,18 +9,22 @@ const Temperature = () => {
   return (
     <div>
       <FormSelector />
-      <Box
-        component={"img"}
-        alt={"alert-cover"}
-        src={`data:image/png;base64, ${images?.country}`}
-        sx={{ width: "50%", p: 1 }}
-      />
-      <Box
-        component={"img"}
-        alt={"alert-cover"}
-        src={`data:image/png;base64, ${images?.temperature}`}
-        sx={{ width: "50%", p: 1 }}
-      />
+      {images && images.country ? (
+        <>
+          <Box
+            component={"img"}
+            alt={"alert-cover"}
+            src={`data:image/png;base64, ${images?.country}`}
+            sx={{ width: "50%", p: 1 }}
+          />
+          <Box
+            component={"img"}
+            alt={"alert-cover"}
+            src={`data:image/png;base64, ${images?.temperature}`}
+            sx={{ width: "50%", p: 1 }}
+          />
+        </>
+      ) : null}
     </div>
   );
 };

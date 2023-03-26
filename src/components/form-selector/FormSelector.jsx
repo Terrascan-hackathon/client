@@ -25,7 +25,6 @@ const FormSelector = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("mort");
     dispatch(getData(location));
   };
 
@@ -47,13 +46,13 @@ const FormSelector = () => {
       noValidate
       autoComplete="off"
     >
-      {/* <TextField
+      <TextField
         id="date"
-        label="Date"
         variant="outlined"
         type="date"
         onChange={(e) => setDate(e.target.value)}
-      /> */}
+        value={date}
+      />
       <TextField
         id="location"
         label="Location"
@@ -62,27 +61,6 @@ const FormSelector = () => {
         onChange={(e) => setLocation(e.target.value)}
         value={location}
       />
-      {/* <TextField
-        select
-        label="Type"
-        sx={{ mb: 2 }}
-        id="demo-multiple-name"
-        multiple
-        value={type}
-        onChange={(e) => setType(e.target.value)}
-        inputProps={{ MenuProps: MenuProps }}
-        defaultValue={names[0]}
-      >
-        {names.map((name) => (
-          <MenuItem
-            key={name}
-            value={name}
-            // style={getStyles(name, personName, theme)}
-          >
-            {name}
-          </MenuItem>
-        ))}
-      </TextField> */}
 
       <Button variant="contained" onClick={(e) => handleSubmit(e)}>
         SUBMIT{" "}
