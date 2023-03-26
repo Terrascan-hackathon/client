@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { baseUrl, userUrl } from './constants';
 
+
 const requestUser = axios.create({
     baseURL: userUrl,
 });

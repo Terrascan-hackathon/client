@@ -4,6 +4,7 @@ import alertReducer from './reducers/alertReducer';
 //  *****************|  MODELS FOR IMPORTS |********************
 
 import userReducer from './reducers/modelReducers';
+import dataReducer from './reducers/dataReducer';
 
 
 // ==============================|| COMBINE REDUCER ||============================== //
@@ -13,6 +14,7 @@ import userReducer from './reducers/modelReducers';
 
 const reducer = combineReducers({
    userState: userReducer,
+   dataState: dataReducer
    alertState : alertReducer,
 });
 
